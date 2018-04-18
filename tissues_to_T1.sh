@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# INPUTS: Freesurfer subject dir, T1 nifti
+# OUTPUTS: Binary TPMs in native space
+
+# Uses the transform from conformed2raw.sh to move 
+# TPMs from tissue_masks.sh to native space
+
 subj=$1
 T1=$2
 mri_dir=$1/mri

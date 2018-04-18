@@ -1,8 +1,10 @@
 #!/bin/bash
 
+# INPUT: Freesurfer subject dir
+# OUTPUT: Binary masks for grey matter, white matter, and ventricles in mri/
+
 subj=$1
 mri_dir=$1/mri
-
 
 for mask_opt in gm all-wm ventricles; do
   mri_binarize \

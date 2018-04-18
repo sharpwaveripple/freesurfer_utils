@@ -1,6 +1,10 @@
 #!/bin/bash
 
-# Simple wrapper for tkregister2 to get fsl .mat output
+# INPUT: Freesurfer subject dir
+# OUTPUT: Conformed to raw anat transform in mri/transforms/fs2anat.mat
+
+# Uses tkregister2 to register orig to rawavg using header info 
+
 subj=$1
 mri_dir=$1/mri
 
