@@ -1,3 +1,5 @@
+#!/usr/bin/env python 
+
 import os
 
 # todo: read all contents into memory, then compare strings
