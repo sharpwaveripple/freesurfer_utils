@@ -49,7 +49,8 @@ def reconall_table(directives):
     if directives == "all":
         return {**ar1, **ar2_subcort, **ar2_subcort2fix,
                 **ar2_fix, **ar2_postfix, **ar3}
-    # elif isinstance(directory, list)
+    # elif isinstance(directory, list) and len(directory > 1):
+    #     return 
 
 def sub_dir_contents(sub_dir):
     dir_contents = os.listdir(sub_dir)
