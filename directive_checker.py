@@ -54,18 +54,21 @@ def reconall_table(directives):
     # elif isinstance(directory, list) and len(directory > 1):
     #     return 
 
+
 def sub_dir_contents(sub_dir):
     dir_contents = os.listdir(sub_dir)
     if "fsaverage" in dir_contents:
         dir_contents.remove("fsaverage")
     return dir_contents
 
+
 def recon_check_dir():
     if not os.path.exists("recon_check"):
         os.makedirs("recon_check")
-    # else:
-    #     check_files = os.listdir("recon_check")
-    #     [os.remove(x) for os.path.join("recon_check", x) in check_files]
+    else:
+        check_files = os.listdir("recon_check")
+        [os.remove(os.path.join("recon_check", x)) for x in check_files]
+
 
 def directive_checker(directives, base_path, sub_list, print_check=None):
     directive_dict = reconall_table(directives)
@@ -73,17 +76,18 @@ def directive_checker(directives, base_path, sub_list, print_check=None):
     for sub in sub_list:
         if print_check is not None:
             print(f"Checking {sub}...")
-        for directive, output in directive_dict.items():
-            directive_file = os.path.join(base_path, sub, output)
-            if os.path.isfile(directive_file):
-                pass
-            else:
-                with open(f"recon_check/{directive}.txt", "a+") as f:
-                    f.write(sub + '\n')
-                break
-            if directive == "balabels":
-                with open("recon_check/completed.txt", "a+") as f:
-                    f.write(sub + '\n')
+        if os.path.isfile("label/rh.entorhinal_exvivo.label"):
+            with open("recon_check/completed.txt", "a+") as f:
+                f.write(sub + '\n')
+        else:
+            for directive, output in directive_dict.items():
+                directive_file = os.path.join(base_path, sub, output)
+                if os.path.isfile(directive_file):
+                    pass
+                else:
+                    with open(f"recon_check/{directive}.txt", "a+") as f:
+                        f.write(sub + '\n')
+                    break
 
 
 base_dir = '/project/3015006.07/JT/FS_new'
