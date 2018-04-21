@@ -76,7 +76,9 @@ def directive_checker(directives, base_path, sub_list, print_check=None):
     for sub in sub_list:
         if print_check is not None:
             print(f"Checking {sub}...")
-        if os.path.isfile("label/rh.entorhinal_exvivo.label"):
+        last_file = os.path.join(base_path, sub, 
+                                 "label/rh.entorhinal_exvivo.label")
+        if os.path.isfile(last_file):
             with open("recon_check/completed.txt", "a+") as f:
                 f.write(sub + '\n')
         else:
