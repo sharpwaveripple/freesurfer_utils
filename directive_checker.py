@@ -1,8 +1,17 @@
 #!/usr/bin/env python 
 
 import os
+import argparse
 
 # todo: read all contents into memory, then compare strings
+
+def parse_input():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-i", type=str, required=True,
+                        help="Input directory")
+    args = parser.parse_args()
+    return args
+
 
 def reconall_table(directives):
     ar1 = {"start": "mri/orig/001.mgz",
@@ -90,6 +99,12 @@ def directive_checker(directives, base_path, sub_list, print_check=None):
                     break
 
 
-base_dir = '/project/3015006.07/JT/FS_new'
-subj_list = sub_dir_contents(base_dir)
-directive_checker("all", base_dir, subj_list, '')
+def io_stream():
+    args = parse_input()
+    subj_list = sub_dir_contents(args.i)
+    directive_checker("all", args.i, subj_list, '')
+    print("Done")
+
+
+if __name__ == "__main__":
+    io_stream()
