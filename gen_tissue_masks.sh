@@ -4,7 +4,7 @@
 # OUTPUT: Binary masks for grey matter, white matter, and ventricles in mri/
 
 subj=$1
-mri_dir=$1/mri
+mri_dir=$subj/mri
 
 for mask_opt in gm all-wm ventricles; do
   mri_binarize \
