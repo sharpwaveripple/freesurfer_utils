@@ -1,0 +1,33 @@
+#!/bin/bash
+
+USAGE="
+Usage: orig2raw  <FS_SUBJECT_DIR>
+
+Takes a freesurfer subject directory as input, uses tkregister2 to register
+orig.mgz (conformed space) to rawavg.mgz (native anat space) using headers,
+and writes an FSL-style transformation to:
+<FS_SUBJECT_DIR>/mri/transforms/fs2anat.mat"
+
+# Uses tkregister2 to register orig to rawavg using header info 
+
+if [ $# -eq 0 ] 
+then 
+  echo $USAGE
+  exit 1
+fi 
+
+subj=$1
+
+
+echo Registering orig to rawavg for $subj...
+
+tkregister2 \
+    --mov $subj/mri/orig.mgz \
+    --targ $subj/mri/rawavg.mgz \
+    --regheader \
+    --fslregout $subj/mri/transforms/fs2anat.mat  \
+    --identity \
+    --noedit \
+    --reg $subj/mri/transforms/register.dat
+
+rm $subj/mri/transforms/register.dat

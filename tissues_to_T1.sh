@@ -8,7 +8,7 @@
 
 subj=$1
 T1=$2
-mri_dir=$1/mri
+mri_dir=$subj/mri
 xfm=$mri_dir/transforms/fs2anat.mat 
 
 if [ ! -f $xfm ]; then

@@ -65,7 +65,7 @@ def reconall_table(directives):
 
 
 def sub_dir_contents(sub_dir):
-    dir_contents = os.listdir(sub_dir)
+    dir_contents = sorted(os.listdir(sub_dir))
     if "fsaverage" in dir_contents:
         dir_contents.remove("fsaverage")
     return dir_contents
@@ -84,10 +84,16 @@ def directive_checker(directives, base_path, sub_list, print_check=None):
     recon_check_dir()
     for sub in sub_list:
         if print_check is not None:
-            print(f"Checking {sub}...")
+            print(f"Checking {sub}... ", end="")
+        running_status = os.path.join(base_path, sub,
+                                      "scripts/IsRunning.lh+rh")
+        if os.path.isfile(running_status):
+            print("Is running")
+            break
         last_file = os.path.join(base_path, sub, 
                                  "label/rh.entorhinal_exvivo.label")
         if os.path.isfile(last_file):
+            print("Finished main recon-all stream")
             with open("recon_check/completed.txt", "a+") as f:
                 f.write(sub + '\n')
         else:
@@ -96,6 +102,7 @@ def directive_checker(directives, base_path, sub_list, print_check=None):
                 if os.path.isfile(directive_file):
                     pass
                 else:
+                    print(f"Stopped at {directive}")
                     with open(f"recon_check/{directive}.txt", "a+") as f:
                         f.write(sub + '\n')
                     break
