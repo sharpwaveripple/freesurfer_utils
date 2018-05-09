@@ -14,8 +14,7 @@ def parse_input():
 
 
 def reconall_table(directives):
-    ar1 = {"start": "mri/orig/001.mgz",
-           "motioncorr": "mri/orig.mgz",
+    ar1 = {"motioncorr": "mri/orig.mgz",
            "talairach":  "mri/transforms/talairach_avi.log",
            "nuintensitycor": "mri/nu.mgz",
            "normalization": "mri/T1.mgz",
