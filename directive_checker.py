@@ -88,7 +88,7 @@ def directive_checker(directives, base_path, sub_list, print_check=None):
                                       "scripts/IsRunning.lh+rh")
         if os.path.isfile(running_status):
             print("Is running")
-            break
+            continue
         last_file = os.path.join(base_path, sub, 
                                  "label/rh.entorhinal_exvivo.label")
         if os.path.isfile(last_file):
