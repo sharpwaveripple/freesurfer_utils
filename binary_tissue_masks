@@ -3,13 +3,14 @@
 # INPUT: Freesurfer subject dir
 # OUTPUT: Binary masks for grey matter, white matter, and ventricles in mri/
 
-subj=$1
-mri_dir=$subj/mri
+SUBJECT=$1
+
+MRI_DIR="$SUBJECT"/mri
 
 for mask_opt in gm all-wm ventricles; do
+  echo Creating "$mask_opt" mask...
   mri_binarize \
-    --i $mri_dir/aparc+aseg.mgz \
-    --${mask_opt} \
-    --o $mri_dir/${mask_opt}.nii.gz
+    --i "$MRI_DIR"/aparc+aseg.mgz \
+    --"${mask_opt}" \
+    --o "$MRI_DIR"/${mask_opt}.nii.gz
 done
-

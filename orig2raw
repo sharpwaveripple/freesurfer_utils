@@ -16,18 +16,19 @@ then
   exit 1
 fi 
 
-subj=$1
+SUBJECT=$1
 
+MRI_DIR="$SUBJECT"/mri
+XFM_DIR="$MRI_DIR"/transforms
 
-echo Registering orig to rawavg for $subj...
-
+echo Registering orig to rawavg for "$SUBJECT"...
 tkregister2 \
-    --mov $subj/mri/orig.mgz \
-    --targ $subj/mri/rawavg.mgz \
+    --mov "$MRI_DIR"/orig.mgz \
+    --targ "$MRI_DIR"/rawavg.mgz \
     --regheader \
-    --fslregout $subj/mri/transforms/fs2anat.mat  \
+    --fslregout "$XFM_DIR"/fs2anat.mat  \
     --identity \
     --noedit \
-    --reg $subj/mri/transforms/register.dat
+    --reg "$XFM_DIR"/register.dat
 
-rm $subj/mri/transforms/register.dat
+rm "$XFM_DIR"/register.dat
