@@ -5,7 +5,7 @@ USAGE="Usage: $(basename "$0") <fs_subject_dir> <epi> <contrast>
 Boundary based registration using a completed FreeSurfer subject.
 Valid contrasts include: t1, t2, bold, dti
 Transform is initiated with FLIRT. The matrix is then inverted
-and saved in FSL format to fs_subject_dir/mri/transforms."
+and saved in FSL format to fs_subject_dir/mri/transforms"
 
 if [[ $# -eq 0 ]] ; then
     echo "$USAGE"

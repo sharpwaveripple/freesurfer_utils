@@ -1,10 +1,21 @@
 #!/bin/bash
 
-subj=$1
+USAGE="Usage: $(basename "$0") <fs_subject_dir>
 
-surfdir=$subj/surf
+Converts FreeSurfer's native surface format to .gii for 
+white and pial surfaces, and saves them in fs_subject_dir/surf/"
 
+if [ $# -eq 0 ] 
+then 
+  echo "$USAGE"
+  exit 0
+fi 
+
+SUBJECT=$1
+
+SURF_DIR="$SUBJECT"/surf
 for surf in pial white; do
   mris_convert \
-    --combinesurfs $surfdir/lh.${surf} $surfdir/rh.${surf} $surfdir/$surf.gii
+    --combinesurfs "$SURF_DIR"/lh."$surf" "$SURF_DIR"/rh."$surf" \
+                   "$SURF_DIR"/"$surf".gii
 done
