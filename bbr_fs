@@ -1,0 +1,31 @@
+#!/bin/bash
+
+USAGE="Usage: $(basename "$0") <fs_subject_dir> <epi> <contrast>
+
+Boundary based registration using a completed FreeSurfer subject.
+Valid contrasts include: t1, t2, bold, dti
+Transform is initiated with FLIRT. The matrix is then inverted
+and saved in FSL format to fs_subject_dir/mri/transforms."
+
+if [[ $# -eq 0 ]] ; then
+    echo "$USAGE"
+    exit 0
+fi
+
+SUBJECT=$1
+EPI=$2
+CONTRAST=$3
+
+SUBJECTS_DIR=$(dirname "$SUBJECT")
+XFM_DIR="$SUBJECT"/mri/transforms
+FS_XFM="$XFM_DIR"/bbrtemp.dat
+FSL_XFM="$XFM_DIR"/"$CONTRAST"2fs.mat
+FSL_XFM_INV="$XFM_DIR"/fs2"$CONTRAST".mat
+
+bbregister \
+  --s "$SUBJECT" --mov "$EPI" --reg "$FS_XFM" --"$CONTRAST" \
+  --init-fsl --fslmat "$FSL_XFM"
+
+echo Saving "$FSL_XFM" as "$FSL_XFM_INV"
+convert_xfm -omat "$FSL_XFM_INV" -inverse "$FSL_XFM"
+rm "$FS_XFM"

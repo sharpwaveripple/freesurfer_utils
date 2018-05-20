@@ -6,9 +6,10 @@
 SUBJECT=$1
 
 MRI_DIR="$SUBJECT"/mri
+declare -a MASKS=("ctx-wm" "all-wm" "ventricles" "gm" "subcort-gm")
 
-for mask_opt in gm all-wm ventricles; do
-  echo Creating "$mask_opt" mask...
+for mask_opt in "${MASKS[@]}"; do
+  echo Creating binary "$mask_opt" mask...
   mri_binarize \
     --i "$MRI_DIR"/aparc+aseg.mgz \
     --"${mask_opt}" \
