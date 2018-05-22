@@ -1,0 +1,47 @@
+#!/bin/bash
+
+USAGE="Usage: $(basename "$0") <fs_subject_dir> <aparc>
+
+Converts a .annot file into volumetric ROIs, which are stored in
+fs_subject_dir/aparc_roi/, as well as a text file of all volumes.
+Will do this bilaterally by default.
+Valid inputs for aparc are: aparc, aparc.a2009s, aparc.DKTatlas"
+
+if [[ $# -eq 0 ]] ; then
+    echo "$USAGE"
+    exit 0
+fi
+
+SUBJECT="${1%/}"
+ANNOT=$2
+
+SUBJECTS_DIR="$(dirname "$1")"
+OUT_DIR="$SUBJECT"/"$ANNOT"_roi
+
+if [ ! -e "$OUT_DIR" ]; then
+    mkdir "$OUT_DIR"
+else 
+    echo "$OUT_DIR" already exists, won\'t duplicate
+    exit 1
+fi
+
+for hemi in lh rh; do
+    mri_annotation2label \
+        --subject "$SUBJECT" \
+        --hemi "$hemi" \
+        --outdir "$OUT_DIR" \
+        --annotation "$ANNOT"
+done
+
+LABELS=$(ls "$OUT_DIR")
+for label in $LABELS; do
+    IFS=. read -ra name <<< "$label"
+    out_vol="$OUT_DIR"/"${name[0]}"_"${name[1]}".nii.gz
+    mri_label2vol \
+        --label "$OUT_DIR"/"$label" \
+        --o "$out_vol" \
+        --identity \
+        --temp "$SUBJECT"/mri/orig.mgz
+    rm "$OUT_DIR"/"$label"
+    echo "$out_vol" >> "$OUT_DIR"/roi_list.txt
+done

@@ -59,8 +59,6 @@ def reconall_table(directives):
     if directives == "all":
         return {**ar1, **ar2_subcort, **ar2_subcort2fix,
                 **ar2_fix, **ar2_postfix, **ar3}
-    # elif isinstance(directory, list) and len(directory > 1):
-    #     return 
 
 
 def sub_dir_contents(sub_dir):
@@ -89,7 +87,7 @@ def directive_checker(directives, base_path, sub_list, print_check=None):
         if os.path.isfile(running_status):
             print("Is running")
             continue
-        last_file = os.path.join(base_path, sub, 
+        last_file = os.path.join(base_path, sub,
                                  "label/rh.entorhinal_exvivo.label")
         if os.path.isfile(last_file):
             print("Finished main recon-all stream")
