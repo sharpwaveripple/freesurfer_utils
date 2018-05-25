@@ -17,6 +17,7 @@ EPI=$2
 CONTRAST=$3
 
 SUBJECTS_DIR=$(dirname "$SUBJECT")
+SUBJECT=$(basename "$SUBJECT")
 XFM_DIR="$SUBJECT"/mri/transforms
 FS_XFM="$XFM_DIR"/bbrtemp.dat
 FSL_XFM="$XFM_DIR"/"$CONTRAST"2fs.mat
