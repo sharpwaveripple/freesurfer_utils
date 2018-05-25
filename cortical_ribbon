@@ -1,0 +1,15 @@
+#!/bin/bash
+
+USAGE="Usage: $(basename "$0") <fs_subject_dir>
+
+Creates a binary mask of the cortical ribbon in fs_subject_dir/mri/"
+
+if [[ $# -eq 0 ]] ; then
+    echo "$USAGE"
+    exit 0
+fi
+
+SUBJECT="${1%/}"
+
+MRI_DIR="$SUBJECT"/mri
+mri_binarize --i "$MRI_DIR"/aseg.mgz --match 3 42 --o "$MRI_DIR"/ribbon.nii.gz
