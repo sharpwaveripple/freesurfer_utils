@@ -12,13 +12,13 @@ if [[ $# -eq 0 ]] ; then
     exit 0
 fi
 
-SUBJECT="${1%/}"
+FULL_PATH="${1%/}"
 EPI=$2
 CONTRAST=$3
 
-SUBJECTS_DIR=$(dirname "$SUBJECT")
-SUBJECT=$(basename "$SUBJECT")
-XFM_DIR="$SUBJECT"/mri/transforms
+SUBJECTS_DIR=$(dirname "$FULL_PATH")
+SUBJECT=$(basename "$FULL_PATH")
+XFM_DIR="$FULL_PATH"/mri/transforms
 FS_XFM="$XFM_DIR"/bbrtemp.dat
 FSL_XFM="$XFM_DIR"/"$CONTRAST"2fs.mat
 FSL_XFM_INV="$XFM_DIR"/fs2"$CONTRAST".mat
