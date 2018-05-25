@@ -1,7 +1,15 @@
 #!/bin/bash
 
-# INPUT: Freesurfer subject dir
-# OUTPUT: Binary masks for grey matter, white matter, and ventricles in mri/
+USAGE="Usage: $(basename "$0") <fs_subject_dir>
+
+Uses mri_binarize to extract cortical white matter, all white matter,
+ventricles, all grey matter, and subcortical grey matter.
+Stores them in fs_subject_dir/mri/"
+
+if [[ $# -eq 0 ]] ; then
+    echo "$USAGE"
+    exit 0
+fi
 
 SUBJECT=$1
 
