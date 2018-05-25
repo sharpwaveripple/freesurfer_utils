@@ -12,7 +12,7 @@ if [[ $# -eq 0 ]] ; then
     exit 0
 fi
 
-SUBJECT=$1
+SUBJECT="${1%/}"
 EPI=$2
 CONTRAST=$3
 
@@ -28,4 +28,4 @@ bbregister \
 
 echo Saving "$FSL_XFM" as "$FSL_XFM_INV"
 convert_xfm -omat "$FSL_XFM_INV" -inverse "$FSL_XFM"
-rm "$FS_XFM"
+# rm "$FS_XFM"*
