@@ -14,8 +14,12 @@ fi
 SUBJECT="${1%/}"
 
 SURF_DIR="$SUBJECT"/surf
-for surf in pial white; do
+for surf in pial ; do
   mris_convert \
-    --combinesurfs "$SURF_DIR"/lh."$surf" "$SURF_DIR"/rh."$surf" \
+    --combinesurfs "$SURF_DIR"/lh.pial "$SURF_DIR"/rh."$surf" \
                    "$SURF_DIR"/"$surf".gii
+done
+
+for hemi in lh rh; do
+  mris_convert "$SURF_DIR"/"$hemi".white "$SURF_DIR"/"$hemi"_white.gii
 done
