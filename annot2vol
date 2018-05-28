@@ -4,7 +4,7 @@ USAGE="Usage: $(basename "$0") <fs_subject_dir> <aparc>
 
 Converts a .annot file into volumetric ROIs, which are stored in
 fs_subject_dir/aparc_roi/, as well as a text file of all volumes.
-Will do this bilaterally by default.
+Will do this bilaterally by default. Remember to see SUBJECTS_DIR!
 Valid inputs for aparc are: aparc, aparc.a2009s, aparc.DKTatlas"
 
 if [[ $# -eq 0 ]] ; then
@@ -15,7 +15,7 @@ fi
 SUBJECT="${1%/}"
 ANNOT=$2
 
-SUBJECTS_DIR="$(dirname "$1")"
+# SUBJECTS_DIR="$(dirname "$1")"
 OUT_DIR="$SUBJECT"/"$ANNOT"_roi
 
 if [ ! -e "$OUT_DIR" ]; then
