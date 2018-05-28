@@ -20,6 +20,6 @@ for surf in pial ; do
                    "$SURF_DIR"/"$surf".gii
 done
 
-for hemi in lh rh; do
+for hemi in lh rh ; do
   mris_convert "$SURF_DIR"/"$hemi".white "$SURF_DIR"/"$hemi"_white.gii
 done
