@@ -15,7 +15,9 @@ fi
 SUBJECT="${1%/}"
 ANNOT=$2
 
-# SUBJECTS_DIR="$(dirname "$1")"
+SUBJECT_BASE="$(basename "$1")"
+SUBJECTS_DIR="$(dirname "$1")"
+echo $SUBJECTS_DIR
 OUT_DIR="$SUBJECT"/"$ANNOT"_roi
 
 if [ ! -e "$OUT_DIR" ]; then
@@ -27,7 +29,7 @@ fi
 
 for hemi in lh rh; do
     mri_annotation2label \
-        --subject "$SUBJECT" \
+        --subject "$SUBJECT_BASE" \
         --hemi "$hemi" \
         --outdir "$OUT_DIR" \
         --annotation "$ANNOT"
