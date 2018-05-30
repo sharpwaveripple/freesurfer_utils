@@ -42,7 +42,10 @@ for label in $LABELS; do
     out_vol="$(realpath "$out_vol")"
     mri_label2vol \
         --label "$OUT_DIR"/"$label" \
+        --proj abs -3 -2 .1 \
         --o "$out_vol" \
+        --hemi lh \
+        --subject "$SUBJECT_BASE" \
         --identity \
         --temp "$SUBJECT"/mri/orig.mgz
     rm "$OUT_DIR"/"$label"

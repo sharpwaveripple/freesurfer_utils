@@ -1,0 +1,28 @@
+#!/usr/bin/env python 
+
+import os
+import sys
+import numpy as np
+import nibabel as nib
+
+def get_basename(fpath):
+    base = os.path.basename(fpath)
+    first = os.path.splitext(base)[0]
+    second = os.path.splitext(first)[0]
+    return second
+
+roi_file = sys.argv[1]
+with open(roi_file) as f:
+    roi_list = f.read().splitlines()
+roi_names = [get_basename(x) for x in roi_list]
+counts = []
+for name, roi in zip(roi_names, roi_list):
+    data = nib.load(roi).get_data()
+    voxel_count = str(np.count_nonzero(data))
+    counts.append(name + ',' + voxel_count)
+counts = '\n'.join(counts)
+outfile='test.txt'
+with open(outfile, 'w+') as f:
+    f.write(counts)
+    f.write('\n')
+
