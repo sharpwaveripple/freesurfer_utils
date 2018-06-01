@@ -28,7 +28,8 @@ mri_label2vol \
   --temp "$MRI_DIR"/orig.mgz \
   --hemi "$HEMI" \
   --fillthresh 0.5 \
-  --fill-ribbon \
   --subject "$SUBJECT_BASE" \
   --identity \
   --o "$OUTPUT"
+
+  # --fill-ribbon \
