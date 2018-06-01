@@ -1,0 +1,34 @@
+#!/bin/bash
+
+USAGE="Usage: $(basename "$0") <fs_subject_dir> <exvivo_label> <hemi>
+
+Takes fs_subject_dir/label/hemi.exvivo_label.label and converts it
+to a volume by sampling the cortical ribbon where the label
+overlaps at the .5 level. Saves it in the same label folder.
+Eg. $(basename "$0") bert BA1_exvivo.thresh lh"
+
+if [[ $# -eq 0 ]] ; then
+    echo "$USAGE"
+    exit 0
+fi
+
+SUBJECT="${1%/}"
+LABEL="${2}"
+HEMI="$3"
+
+SUBJECT_BASE="$(basename "$1")"
+SUBJECTS_DIR="$(dirname "$1")"
+LABEL_DIR="$SUBJECT"/label
+MRI_DIR="$SUBJECT"/mri
+LABEL_FILE="$LABEL_DIR"/"$HEMI"."$LABEL"
+OUTPUT="$MRI_DIR"/"$HEMI"."$LABEL".nii.gz
+
+mri_label2vol \
+  --label "$LABEL_FILE" \
+  --temp "$MRI_DIR"/orig.mgz \
+  --hemi "$HEMI" \
+  --fillthresh 0.5 \
+  --fill-ribbon \
+  --subject "$SUBJECT_BASE" \
+  --identity \
+  --o "$OUTPUT"
