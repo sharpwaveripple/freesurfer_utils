@@ -1,0 +1,21 @@
+#!/bin/bash
+
+USAGE="Usage: $(basename "$0") <fs_subject_dir>
+
+Cleans up auto files in mri/ and nofix files in surf/"
+
+if [[ $# -eq 0 ]] ; then
+    echo "$USAGE"
+    exit 0
+fi
+
+SUBJECT="${1%/}"
+SUBJECT_DIR="$(readlink -e "$SUBJECT")"
+
+MRI_DIR="$SUBJECT_DIR"/mri
+SURF_DIR="$SUBJECT_DIR"/surf
+
+cd "$MRI_DIR"
+rm *auto*
+cd "$SURF_DIR"
+rm *.nofix
