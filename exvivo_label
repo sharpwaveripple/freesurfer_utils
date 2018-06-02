@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USAGE="Usage: $(basename "$0") <fs_subject_dir> <exvivo_label> <hemi>
+USAGE="Usage: $(basename "$0") <fs_subject_dir> <exvivo_label> <hemi> <ribbon>
 
 Takes fs_subject_dir/label/hemi.exvivo_label.label and converts it
 to a volume by sampling the cortical ribbon where the label
@@ -23,13 +23,26 @@ MRI_DIR="$SUBJECT"/mri
 LABEL_FILE="$LABEL_DIR"/"$HEMI"."$LABEL"
 OUTPUT="$MRI_DIR"/"$HEMI"."$LABEL".nii.gz
 
-mri_label2vol \
-  --label "$LABEL_FILE" \
-  --temp "$MRI_DIR"/orig.mgz \
-  --hemi "$HEMI" \
-  --fillthresh 0.5 \
-  --subject "$SUBJECT_BASE" \
-  --identity \
-  --o "$OUTPUT"
+if [ -z "$4" ]; then
+    echo "No 4th argument supplied, so sampling at white surf"
+    mri_label2vol \
+      --label "$LABEL_FILE" \
+      --temp "$MRI_DIR"/orig.mgz \
+      --hemi "$HEMI" \
+      --fillthresh 0.5 \
+      --subject "$SUBJECT_BASE" \
+      --identity \
+      --o "$OUTPUT"
+else
+    echo "$4 detected, sampling the cortical ribbon"
+    mri_label2vol \
+      --label "$LABEL_FILE" \
+      --temp "$MRI_DIR"/orig.mgz \
+      --hemi "$HEMI" \
+      --fillthresh 0.5 \
+      --fill-ribbon \
+      --subject "$SUBJECT_BASE" \
+      --identity \
+      --o "$OUTPUT"
+fi
 
-  # --fill-ribbon \
