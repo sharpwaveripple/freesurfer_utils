@@ -1,11 +1,11 @@
 #!/bin/bash
 
-USAGE="Usage: $(basename "$0") <fs_subject_dir> <aparc> <ribbon>
+USAGE="Usage: $(basename "$0") <fs_subject_dir> <aparc>
 
 Converts a .annot file into volumetric ROIs, which are stored in
 fs_subject_dir/aparc_roi/, as well as a text file of all volumes.
-Will do this bilaterally by default. Including an argument in the
-third field will sample from the cortical ribbon.
+Will do this bilaterally by default. Since I'm lazy, makes ROIs
+sampling at the white surf and whole cortical ribbon.
 Valid inputs for aparc are: aparc, aparc.a2009s, aparc.DKTatlas"
 
 if [[ $# -eq 0 ]] ; then
@@ -37,33 +37,27 @@ LABELS=$(ls "$OUT_DIR")
 for label in $LABELS; do
     IFS=. read -ra name <<< "$label"
     hemi="${name[0]}"
-    if [ -z "$3" ]; then
-        echo "No 3rd argument supplied, so sampling at white surf"
-        out_vol="$OUT_DIR"/"$hemi"."${name[1]}"_thresh0.5.nii.gz
-        out_vol="$(realpath "$out_vol")"
-        mri_label2vol \
-            --label "$OUT_DIR"/"$label" \
-            --o "$out_vol" \
-            --hemi "$hemi" \
-            --fillthresh 0.5 \
-            --subject "$SUBJECT_BASE" \
-            --identity \
-            --temp "$SUBJECT"/mri/orig.mgz
-        echo "$out_vol" >> "$OUT_DIR"/roi_wmedge.txt
-    else
-        echo "$3 detected, sampling the cortical ribbon"
-        out_vol="$OUT_DIR"/"$hemi"."${name[1]}"_ribbon.nii.gz
-        out_vol="$(realpath "$out_vol")"
-        mri_label2vol \
-            --label "$OUT_DIR"/"$label" \
-            --o "$out_vol" \
-            --hemi "$hemi" \
-            --fill-ribbon \
-            --fillthresh 0.5 \
-            --subject "$SUBJECT_BASE" \
-            --identity \
-            --temp "$SUBJECT"/mri/orig.mgz
-        echo "$out_vol" >> "$OUT_DIR"/roi_ribbon.txt
-    fi
+    out_vol="$OUT_DIR"/"$hemi"."${name[1]}"_thresh0.5.nii.gz
+    out_vol="$(realpath "$out_vol")"
+    mri_label2vol \
+        --label "$OUT_DIR"/"$label" \
+        --o "$out_vol" \
+        --hemi "$hemi" \
+        --fillthresh 0.5 \
+        --subject "$SUBJECT_BASE" \
+        --identity \
+        --temp "$SUBJECT"/mri/orig.mgz
+    echo "$out_vol" >> "$OUT_DIR"/roi_wmedge.txt
+    out_vol="$OUT_DIR"/"$hemi"."${name[1]}"_ribbon.nii.gz
+    out_vol="$(realpath "$out_vol")"
+    mri_label2vol \
+        --label "$OUT_DIR"/"$label" \
+        --o "$out_vol" \
+        --hemi "$hemi" \
+        --fill-ribbon \
+        --subject "$SUBJECT_BASE" \
+        --identity \
+        --temp "$SUBJECT"/mri/orig.mgz
+    echo "$out_vol" >> "$OUT_DIR"/roi_ribbon.txt
     rm "$OUT_DIR"/"$label"
 done
