@@ -43,7 +43,7 @@ for label in $LABELS; do
     out_vol="$OUT_DIR"/"$hemi"."${name[1]}".nii.gz
     out_vol="$(realpath "$out_vol")"
     if [ -z "$3" ]; then
-        echo "No 4th argument supplied, so sampling at white surf"
+        echo "No 3rd argument supplied, so sampling at white surf"
         mri_label2vol \
             --label "$OUT_DIR"/"$label" \
             --o "$out_vol" \
