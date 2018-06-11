@@ -1,9 +1,7 @@
 #!/bin/bash
 
 subj="${1%/}"
-fsdir=$(dirname "$1")
-fsdir=$(readlink -f $fsdir)
-mri_dir=$fsdir/$subj/mri
+mri_dir=$subj/mri
 
 mri_binarize \
   --i $mri_dir/aparc+aseg.mgz \
@@ -18,8 +16,7 @@ for surf in pial white; do
       --surf ${surf} \
       --identity $subj \
       --template $mri_dir/orig.mgz \
-      --o $mri_dir/${hemi}_${surf}.nii.gz \
-      --sd $fsdir
+      --o $mri_dir/${hemi}_${surf}.nii.gz
   done
   fslmaths $mri_dir/lh_${surf}.nii.gz \
     -add $mri_dir/rh_${surf}.nii.gz \
@@ -28,5 +25,5 @@ for surf in pial white; do
     -sub $mri_dir/ventricles.nii.gz \
     -thr 0 -bin \
     $mri_dir/${surf}_surf.nii.gz
-  rm $mri_dir/lh_${surf}.nii.gz $mri_dir/rh_${surf}.nii.gz  
+  rm $mri_dir/lh_${surf}.nii.gz $mri_dir/rh_${surf}.nii.gz $mri_dir/cc.nii.gz
 done
