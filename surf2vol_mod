@@ -1,6 +1,9 @@
 #!/bin/bash
 
-subj="${1%/}"
+SUBJ_DIR="${1%/}"
+SUBJECT=$(basename "$SUBJ_DIR")
+SUBJECTS_DIR=$(dirname "$SUBJ_DIR")
+
 mri_dir=$subj/mri
 
 mri_binarize \
