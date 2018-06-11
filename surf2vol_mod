@@ -11,6 +11,7 @@ mri_binarize \
 for surf in pial white; do
   for hemi in lh rh; do
     mri_surf2vol \
+      --sd $(dirname $fs_dir) \
       --mkmask \
       --hemi ${hemi} \
       --surf ${surf} \
