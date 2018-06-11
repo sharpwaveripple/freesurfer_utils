@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# export SUBJECTS_DIR=/home/sharpwaveripple/ukb/fs
-# export SUBJECTS_DIR=/home/sharpwaveripple
-# SUBJECT=001_2006
-
-subj=$1
+subj="${1%/}"
 fsdir=$(dirname "$1")
 fsdir=$(readlink -f $fsdir)
 mri_dir=$fsdir/$subj/mri
+
+mri_binarize \
+  --i $mri_dir/aparc+aseg.mgz \
+  --match 251 252 253 254 255 \
+  --o $mri_dir/cc.nii.gz
 
 for surf in pial white; do
   for hemi in lh rh; do
@@ -21,7 +22,11 @@ for surf in pial white; do
       --sd $fsdir
   done
   fslmaths $mri_dir/lh_${surf}.nii.gz \
-    -add $mri_dir/rh_${surf}.nii.gz -bin \
+    -add $mri_dir/rh_${surf}.nii.gz \
+    -bin \
+    -sub $mri_dir/cc.nii.gz \
+    -sub $mri_dir/ventricles.nii.gz \
+    -thr 0 -bin \
     $mri_dir/${surf}_surf.nii.gz
   rm $mri_dir/lh_${surf}.nii.gz $mri_dir/rh_${surf}.nii.gz  
 done
