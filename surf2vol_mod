@@ -2,9 +2,9 @@
 
 SUBJ_DIR="${1%/}"
 SUBJECT=$(basename "$SUBJ_DIR")
-SUBJECTS_DIR=$(dirname "$SUBJ_DIR")
+export SUBJECTS_DIR=$(dirname "$SUBJ_DIR")
 
-mri_dir=$subj/mri
+mri_dir=$SUBJ_DIR/mri
 
 mri_binarize \
   --i $mri_dir/aparc+aseg.mgz \
@@ -14,11 +14,10 @@ mri_binarize \
 for surf in pial white; do
   for hemi in lh rh; do
     mri_surf2vol \
-      --sd $(dirname $fs_dir) \
       --mkmask \
       --hemi ${hemi} \
       --surf ${surf} \
-      --identity $subj \
+      --identity $SUBJECT \
       --template $mri_dir/orig.mgz \
       --o $mri_dir/${hemi}_${surf}.nii.gz
   done
@@ -29,5 +28,5 @@ for surf in pial white; do
     -sub $mri_dir/ventricles.nii.gz \
     -thr 0 -bin \
     $mri_dir/${surf}_surf.nii.gz
-  rm $mri_dir/lh_${surf}.nii.gz $mri_dir/rh_${surf}.nii.gz $mri_dir/cc.nii.gz
+  rm $mri_dir/lh_${surf}.nii.gz $mri_dir/rh_${surf}.nii.gz
 done
