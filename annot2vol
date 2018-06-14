@@ -21,7 +21,9 @@ SUBJECTS_DIR="$(dirname "$1")"
 echo $SUBJECTS_DIR
 OUT_DIR="$SUBJECT"/"$ANNOT"_roi
 
-if [ ! -e "$OUT_DIR" ]; then
+if [ -e "$OUT_DIR" ]; then
+    rm -rf "$OUT_DIR"
+else
     mkdir "$OUT_DIR"
 fi
 

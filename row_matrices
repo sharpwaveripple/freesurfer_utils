@@ -69,6 +69,7 @@ def io_stream():
     labels = desikan_dict()  # generalize this
     roi = os.path.join(args.fs_dir, f'{args.parc}_roi/{args.roi_name}.nii.gz')
     seed_size = num_seeds(roi)
+    norm_factor = seed_size * 5000
     results_folder = os.path.join(args.bedpost_dir, args.roi_name)
     coords, dotmat = probtrack_output(results_folder)
     parc_file = os.path.join(args.fs_dir, f'mri/{args.parc}+aseg.mgz')
@@ -81,7 +82,8 @@ def io_stream():
             row_vector.append('0')
         else:
             n_samples = np.sum(dotmat['samples'][label_ind])
-            weighted_samples = np.round_(n_samples / (5000 * seed_size), 3)
+            weighted_samples = (n_samples / norm_factor) * 100
+            weighted_samples = np.round(weighted_samples, 2)
             row_vector.append(str(weighted_samples))
     row_vector = ' '.join(row_vector)
     out_file = os.path.join(args.bedpost_dir, f'{args.roi_name}.txt')
