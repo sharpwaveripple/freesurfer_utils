@@ -38,8 +38,8 @@ done
 rm aseg_stats.csv
    
 SED_ARGS='
-s/lh_/L/g
-s/rh_/R/g
+s/lh_/L_/g
+s/rh_/R_/g
 s/_thickness/_CT/g
 s/_area/_SA/g
 s/_volume/_VOL/g
