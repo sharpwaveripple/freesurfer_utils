@@ -62,10 +62,11 @@ def reconall_table(directives):
 
 
 def sub_dir_contents(sub_dir):
-    dir_contents = sorted(os.listdir(sub_dir))
-    if "fsaverage" in dir_contents:
-        dir_contents.remove("fsaverage")
-    return dir_contents
+    dirs = [x for x in os.listdir(sub_dir) if os.path.isdir(os.path.join(sub_dir, x))]
+    dirs = sorted(dirs)
+    if "fsaverage" in dirs:
+        dirs.remove("fsaverage")
+    return dirs
 
 
 def recon_check_dir():
