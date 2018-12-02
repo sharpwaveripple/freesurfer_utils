@@ -15,6 +15,7 @@ def parse_input():
 
 def reconall_table(directives):
            # "talairach":  "mri/transforms/talairach_avi.log",
+                       # "tessellate": "surf/rh.orig.nofix",
     ar1 = {"motioncorr": "mri/orig.mgz",
            "nuintensitycor": "mri/nu.mgz",
            "normalization": "mri/T1.mgz",
@@ -27,7 +28,6 @@ def reconall_table(directives):
                        "maskbfs": "mri/brain.finalsurfs.mgz",
                        "segmentation": "mri/wm.mgz",
                        "fill": "mri/filled.mgz",
-                       "tessellate": "surf/rh.orig.nofix",
                        "smooth1": "surf/rh.smoothwm.nofix",
                        "inflate1": "surf/rh.inflated.nofix",
                        "qsphere": "surf/rh.qsphere.nofix"}
