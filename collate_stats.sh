@@ -1,8 +1,8 @@
 #!/bin/bash
 
 module load freesurfer
-export SUBJECTS_DIR=/home/jt629/SCANS_FS/
-subj_list=scratch/recon_check/longitudinal.txt
+export SUBJECTS_DIR=/home/jt629/scratch/SCANS_FS/
+subj_list=~/scratch/recon_check/longitudinal.txt
 
 aseg_bin=$(which asegstats2table)
 aparc_bin=$(which aparcstats2table)
@@ -89,10 +89,13 @@ s/Caudate/CAUD_VOL/g
 s/Hippocampus/HIPP_VOL/g
 s/Amygdala/AMYG_VOL/g
 s/Accumbens.area/ACCU_VOL/g
+s/lh.aparc.volume/Subject/g
 '
 
 sed -i -e "${SED_ARGS}" fs_stats.csv
-# remove duplicate columns
-awk -F, 'NR==1{for(i=1;i<=NF;i++)if(!($i in v)){ v[$i];t[i]}}{s=""; for(i=1;i<=NF;i++)if(i in t)s=s sprintf("%s,",$i);if(s){sub(/,$/,"",s);print s}} ' fs_stats.csv > fs_stats.csv
 
-awk '!seen[$0]++' fs_stats.csv > fs_stats.csv
+# remove duplicate columns
+awk -F, 'NR==1{for(i=1;i<=NF;i++)if(!($i in v)){ v[$i];t[i]}}{s=""; for(i=1;i<=NF;i++)if(i in t)s=s sprintf("%s,",$i);if(s){sub(/,$/,"",s);print s}} ' fs_stats.csv > tmp1.csv
+
+rm fs_stats.csv
+mv tmp1.csv fs_stats.csv
