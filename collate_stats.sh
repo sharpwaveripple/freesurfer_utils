@@ -2,6 +2,7 @@
 
 module load freesurfer
 export SUBJECTS_DIR=/home/jt629/SCANS_FS/
+subj_list=scratch/recon_check/longitudinal.txt
 
 aseg_bin=$(which asegstats2table)
 aparc_bin=$(which aparcstats2table)
@@ -9,7 +10,7 @@ aparc_bin=$(which aparcstats2table)
 for hemi in lh rh; do
     for meas in volume thickness area meancurv gauscurv; do
 	python2 $aparc_bin \
-	    --subjectsfile=recon_check/completed.txt \
+	    --subjectsfile=${subj_list} \
 	    --hemi=$hemi \
 	    --meas=$meas \
 	    --parc=aparc \
@@ -19,7 +20,7 @@ for hemi in lh rh; do
 done
 
 python2 $aseg_bin \
-    --subjectsfile=recon_check/completed.txt \
+    --subjectsfile=${subj_list} \
     --delimiter=comma \
     --tablefile=aseg_stats.csv
 
@@ -91,3 +92,7 @@ s/Accumbens.area/ACCU_VOL/g
 '
 
 sed -i -e "${SED_ARGS}" fs_stats.csv
+# remove duplicate columns
+awk -F, 'NR==1{for(i=1;i<=NF;i++)if(!($i in v)){ v[$i];t[i]}}{s=""; for(i=1;i<=NF;i++)if(i in t)s=s sprintf("%s,",$i);if(s){sub(/,$/,"",s);print s}} ' fs_stats.csv > fs_stats.csv
+
+awk '!seen[$0]++' fs_stats.csv > fs_stats.csv
