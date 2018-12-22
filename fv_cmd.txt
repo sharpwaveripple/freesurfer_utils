@@ -1,0 +1,14 @@
+-v T1.mgz aseg.auto.mgz:colormap=lut:opacity=0.5
+-viewport axial -slice 127 95 127 -ss ax00
+-viewport axial -slice 127 105 127 -ss ax01
+-viewport axial -slice 127 115 127 -ss ax02
+-viewport axial -slice 127 125 127 -ss ax03
+-viewport axial -slice 127 135 127 -ss ax04
+-viewport axial -slice 127 145 127 -ss ax05
+-viewport axial -slice 127 155 127 -ss ax06
+-viewport axial -slice 127 165 127 -ss ax07
+-viewport axial -slice 127 175 127 -ss ax08
+-viewport axial -slice 127 185 127 -ss ax09
+-viewport axial -slice 127 195 127 -ss ax10
+-viewport axial -slice 127 205 127 -ss ax11
+-quit
