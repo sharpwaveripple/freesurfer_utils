@@ -50,16 +50,16 @@ for label in $LABELS; do
         --identity \
         --temp "$SUBJECT"/mri/orig.mgz
     echo "$out_vol" >> "$OUT_DIR"/roi_wmedge.txt
-    out_vol="$OUT_DIR"/"$hemi"."${name[1]}"_ribbon.nii.gz
-    out_vol="$(realpath "$out_vol")"
-    mri_label2vol \
-        --label "$OUT_DIR"/"$label" \
-        --o "$out_vol" \
-        --hemi "$hemi" \
-        --fill-ribbon \
-        --subject "$SUBJECT_BASE" \
-        --identity \
-        --temp "$SUBJECT"/mri/orig.mgz
-    echo "$out_vol" >> "$OUT_DIR"/roi_ribbon.txt
+    # out_vol="$OUT_DIR"/"$hemi"."${name[1]}"_ribbon.nii.gz
+    # out_vol="$(realpath "$out_vol")"
+    # mri_label2vol \
+    #     --label "$OUT_DIR"/"$label" \
+    #     --o "$out_vol" \
+    #     --hemi "$hemi" \
+    #     --fill-ribbon \
+    #     --subject "$SUBJECT_BASE" \
+    #     --identity \
+    #     --temp "$SUBJECT"/mri/orig.mgz
+    # echo "$out_vol" >> "$OUT_DIR"/roi_ribbon.txt
     rm "$OUT_DIR"/"$label"
 done
