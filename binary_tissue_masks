@@ -23,3 +23,7 @@ for mask_opt in "${MASKS[@]}"; do
     --"${mask_opt}" \
     --o "$MRI_DIR"/${mask_opt}.nii.gz
 done
+
+echo "Creating cortical gm mask..."
+fslmaths "$MRI_DIR"/gm.nii.gz -sub "$MRI_DIR"/subcort-gm.nii.gz \
+  "$MRI_DIR"/ctx-gm.nii.gz
