@@ -1,4 +1,4 @@
--v T1.mgz aseg.auto.mgz:colormap=lut:opacity=0.5
+-v T1.mgz aparc+aseg.mgz:colormap=lut:opacity=0.5
 -viewport axial -slice 127 95 127 -ss ax00
 -viewport axial -slice 127 105 127 -ss ax01
 -viewport axial -slice 127 115 127 -ss ax02
