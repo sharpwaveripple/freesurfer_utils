@@ -1,4 +1,4 @@
-Num	Name	R	G	B       A
+#Num	Name	R	G	B       A
 1	Left-Thalamus-Proper	0	118	14      0
 2	Left-Caudate	122	186	220     0
 3	Left-Putamen	236	13	176     0
