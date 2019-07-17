@@ -1,83 +1,83 @@
-Num,Name,R,G,B
-1,Left+AC0-Thalamus+AC0-Proper,0,118,14
-2,Left+AC0-Caudate,122,186,220
-3,Left+AC0-Putamen,236,13,176
-4,Left+AC0-Pallidum,12,48,255
-5,Left+AC0-Hippocampus,220,216,20
-6,Left+AC0-Amygdala,103,255,255
-7,Left+AC0-Accumbens+AC0-area,255,165,0
-8,Right+AC0-Thalamus+AC0-Proper,0,118,14
-9,Right+AC0-Caudate,122,186,220
-10,Right+AC0-Putamen,236,13,176
-11,Right+AC0-Pallidum,13,48,255
-12,Right+AC0-Hippocampus,220,216,20
-13,Right+AC0-Amygdala,103,255,255
-14,Right+AC0-Accumbens+AC0-area,255,165,0
-15,lh+AC0-bankssts,25,100,40
-16,lh+AC0-caudalanteriorcingulate,125,100,160
-17,lh+AC0-caudalmiddlefrontal,100,25,0
-18,lh+AC0-cuneus,220,20,100
-19,lh+AC0-entorhinal,220,20,10
-20,lh+AC0-fusiform,180,220,140
-21,lh+AC0-inferiorparietal,220,60,220
-22,lh+AC0-inferiortemporal,180,40,120
-23,lh+AC0-isthmuscingulate,140,20,140
-24,lh+AC0-lateraloccipital,20,30,140
-25,lh+AC0-lateralorbitofrontal,35,75,50
-26,lh+AC0-lingual,225,140,140
-27,lh+AC0-medialorbitofrontal,200,35,75
-28,lh+AC0-middletemporal,160,100,50
-29,lh+AC0-parahippocampal,20,220,60
-30,lh+AC0-paracentral,60,220,60
-31,lh+AC0-parsopercularis,220,180,140
-32,lh+AC0-parsorbitalis,20,100,50
-33,lh+AC0-parstriangularis,220,60,20
-34,lh+AC0-pericalcarine,120,100,60
-35,lh+AC0-postcentral,220,20,20
-36,lh+AC0-posteriorcingulate,220,180,220
-37,lh+AC0-precentral,60,20,220
-38,lh+AC0-precuneus,160,140,180
-39,lh+AC0-rostralanteriorcingulate,80,20,140
-40,lh+AC0-rostralmiddlefrontal,75,50,125
-41,lh+AC0-superiorfrontal,20,220,160
-42,lh+AC0-superiorparietal,20,180,140
-43,lh+AC0-superiortemporal,140,220,220
-44,lh+AC0-supramarginal,80,160,20
-45,lh+AC0-frontalpole,100,0,100
-46,lh+AC0-temporalpole,70,70,70
-47,lh+AC0-transversetemporal,150,150,200
-48,lh+AC0-insula,255,192,32
-49,rh+AC0-bankssts,25,100,40
-50,rh+AC0-caudalanteriorcingulate,125,100,160
-51,rh+AC0-caudalmiddlefrontal,100,25,0
-52,rh+AC0-cuneus,220,20,100
-53,rh+AC0-entorhinal,220,20,10
-54,rh+AC0-fusiform,180,220,140
-55,rh+AC0-inferiorparietal,220,60,220
-56,rh+AC0-inferiortemporal,180,40,120
-57,rh+AC0-isthmuscingulate,140,20,140
-58,rh+AC0-lateraloccipital,20,30,140
-59,rh+AC0-lateralorbitofrontal,35,75,50
-60,rh+AC0-lingual,225,140,140
-61,rh+AC0-medialorbitofrontal,200,35,75
-62,rh+AC0-middletemporal,160,100,50
-63,rh+AC0-parahippocampal,20,220,60
-64,rh+AC0-paracentral,60,220,60
-65,rh+AC0-parsopercularis,220,180,140
-66,rh+AC0-parsorbitalis,20,100,50
-67,rh+AC0-parstriangularis,220,60,20
-68,rh+AC0-pericalcarine,120,100,60
-69,rh+AC0-postcentral,220,20,20
-70,rh+AC0-posteriorcingulate,220,180,220
-71,rh+AC0-precentral,60,20,220
-72,rh+AC0-precuneus,160,140,180
-73,rh+AC0-rostralanteriorcingulate,80,20,140
-74,rh+AC0-rostralmiddlefrontal,75,50,125
-75,rh+AC0-superiorfrontal,20,220,160
-76,rh+AC0-superiorparietal,20,180,140
-77,rh+AC0-superiortemporal,140,220,220
-78,rh+AC0-supramarginal,80,160,20
-79,rh+AC0-frontalpole,100,0,100
-80,rh+AC0-temporalpole,70,70,70
-81,rh+AC0-transversetemporal,150,150,200
-82,rh+AC0-insula,255,192,32
+Num	Name	R	G	B
+1	Left+AC0-Thalamus+AC0-Proper	0	118	14
+2	Left+AC0-Caudate	122	186	220
+3	Left+AC0-Putamen	236	13	176
+4	Left+AC0-Pallidum	12	48	255
+5	Left+AC0-Hippocampus	220	216	20
+6	Left+AC0-Amygdala	103	255	255
+7	Left+AC0-Accumbens+AC0-area	255	165	0
+8	Right+AC0-Thalamus+AC0-Proper	0	118	14
+9	Right+AC0-Caudate	122	186	220
+10	Right+AC0-Putamen	236	13	176
+11	Right+AC0-Pallidum	13	48	255
+12	Right+AC0-Hippocampus	220	216	20
+13	Right+AC0-Amygdala	103	255	255
+14	Right+AC0-Accumbens+AC0-area	255	165	0
+15	lh+AC0-bankssts	25	100	40
+16	lh+AC0-caudalanteriorcingulate	125	100	160
+17	lh+AC0-caudalmiddlefrontal	100	25	0
+18	lh+AC0-cuneus	220	20	100
+19	lh+AC0-entorhinal	220	20	10
+20	lh+AC0-fusiform	180	220	140
+21	lh+AC0-inferiorparietal	220	60	220
+22	lh+AC0-inferiortemporal	180	40	120
+23	lh+AC0-isthmuscingulate	140	20	140
+24	lh+AC0-lateraloccipital	20	30	140
+25	lh+AC0-lateralorbitofrontal	35	75	50
+26	lh+AC0-lingual	225	140	140
+27	lh+AC0-medialorbitofrontal	200	35	75
+28	lh+AC0-middletemporal	160	100	50
+29	lh+AC0-parahippocampal	20	220	60
+30	lh+AC0-paracentral	60	220	60
+31	lh+AC0-parsopercularis	220	180	140
+32	lh+AC0-parsorbitalis	20	100	50
+33	lh+AC0-parstriangularis	220	60	20
+34	lh+AC0-pericalcarine	120	100	60
+35	lh+AC0-postcentral	220	20	20
+36	lh+AC0-posteriorcingulate	220	180	220
+37	lh+AC0-precentral	60	20	220
+38	lh+AC0-precuneus	160	140	180
+39	lh+AC0-rostralanteriorcingulate	80	20	140
+40	lh+AC0-rostralmiddlefrontal	75	50	125
+41	lh+AC0-superiorfrontal	20	220	160
+42	lh+AC0-superiorparietal	20	180	140
+43	lh+AC0-superiortemporal	140	220	220
+44	lh+AC0-supramarginal	80	160	20
+45	lh+AC0-frontalpole	100	0	100
+46	lh+AC0-temporalpole	70	70	70
+47	lh+AC0-transversetemporal	150	150	200
+48	lh+AC0-insula	255	192	32
+49	rh+AC0-bankssts	25	100	40
+50	rh+AC0-caudalanteriorcingulate	125	100	160
+51	rh+AC0-caudalmiddlefrontal	100	25	0
+52	rh+AC0-cuneus	220	20	100
+53	rh+AC0-entorhinal	220	20	10
+54	rh+AC0-fusiform	180	220	140
+55	rh+AC0-inferiorparietal	220	60	220
+56	rh+AC0-inferiortemporal	180	40	120
+57	rh+AC0-isthmuscingulate	140	20	140
+58	rh+AC0-lateraloccipital	20	30	140
+59	rh+AC0-lateralorbitofrontal	35	75	50
+60	rh+AC0-lingual	225	140	140
+61	rh+AC0-medialorbitofrontal	200	35	75
+62	rh+AC0-middletemporal	160	100	50
+63	rh+AC0-parahippocampal	20	220	60
+64	rh+AC0-paracentral	60	220	60
+65	rh+AC0-parsopercularis	220	180	140
+66	rh+AC0-parsorbitalis	20	100	50
+67	rh+AC0-parstriangularis	220	60	20
+68	rh+AC0-pericalcarine	120	100	60
+69	rh+AC0-postcentral	220	20	20
+70	rh+AC0-posteriorcingulate	220	180	220
+71	rh+AC0-precentral	60	20	220
+72	rh+AC0-precuneus	160	140	180
+73	rh+AC0-rostralanteriorcingulate	80	20	140
+74	rh+AC0-rostralmiddlefrontal	75	50	125
+75	rh+AC0-superiorfrontal	20	220	160
+76	rh+AC0-superiorparietal	20	180	140
+77	rh+AC0-superiortemporal	140	220	220
+78	rh+AC0-supramarginal	80	160	20
+79	rh+AC0-frontalpole	100	0	100
+80	rh+AC0-temporalpole	70	70	70
+81	rh+AC0-transversetemporal	150	150	200
+82	rh+AC0-insula	255	192	32
