@@ -1,5 +1,16 @@
 #!/bin/bash
 
+USAGE="Usage: $(basename "$0") <fs_subject_dir>
+
+Converts white and pial surf to volumes. Note that both have
+a boundary on the CC, so that is masked and removed."
+
+if [ $# -eq 0 ] 
+then 
+  echo "$USAGE"
+  exit 0
+fi 
+
 SUBJ_DIR="${1%/}"
 SUBJECT=$(basename "$SUBJ_DIR")
 export SUBJECTS_DIR=$(dirname "$SUBJ_DIR")
