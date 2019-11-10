@@ -6,6 +6,6 @@ with open('destrieux.txt') as f:
         row = line.strip().split()
         x.append('\t'.join(row))
 
-with open('destrieux_new.txt', 'w+') as f:
-    f.write('\n'.join(x))
-    f.write('\n')
+# with open('destrieux_new.txt', 'w+') as f:
+#     f.write('\n'.join(x))
+#     f.write('\n')
