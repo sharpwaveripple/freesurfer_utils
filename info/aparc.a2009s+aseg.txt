@@ -54,7 +54,6 @@
 11139	ctx_lh_Lat_Fis-ant-Horizont	61	20	220	0
 11140	ctx_lh_Lat_Fis-ant-Vertical	61	20	60	0
 11141	ctx_lh_Lat_Fis-post	61	60	100	0
-11142	ctx_lh_Medial_wall	25	25	25	0
 11143	ctx_lh_Pole_occipital	140	20	60	0
 11144	ctx_lh_Pole_temporal	220	180	20	0
 11145	ctx_lh_S_calcarine	63	180	180	0
@@ -129,7 +128,6 @@
 12139	ctx_rh_Lat_Fis-ant-Horizont	61	20	220	0
 12140	ctx_rh_Lat_Fis-ant-Vertical	61	20	60	0
 12141	ctx_rh_Lat_Fis-post	61	60	100	0
-12142	ctx_rh_Medial_wall	25	25	25	0
 12143	ctx_rh_Pole_occipital	140	20	60	0
 12144	ctx_rh_Pole_temporal	220	180	20	0
 12145	ctx_rh_S_calcarine	63	180	180	0
